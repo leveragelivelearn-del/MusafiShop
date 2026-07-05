@@ -190,8 +190,8 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       metadataBase: new URL(baseUrl),
       title: {
-        default: settings.metaTitle || settings.brandName || "Gentsity",
-        template: `%s | ${settings.brandName || "Gentsity"}`,
+        default: settings.metaTitle || settings.brandName || "MasafiShop",
+        template: `%s | ${settings.brandName || "MasafiShop"}`,
       },
       description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
       manifest: '/manifest.json',
@@ -203,21 +203,21 @@ export async function generateMetadata(): Promise<Metadata> {
       appleWebApp: {
         capable: true,
         statusBarStyle: 'default',
-        title: settings.brandName || "Gentsity",
+        title: settings.brandName || "MasafiShop",
       },
       formatDetection: {
         telephone: false,
       },
       openGraph: {
-        title: settings.metaTitle || settings.brandName || "Gentsity",
+        title: settings.metaTitle || settings.brandName || "MasafiShop",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
         url: baseUrl,
-        siteName: settings.brandName || "Gentsity",
+        siteName: settings.brandName || "MasafiShop",
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: settings.metaTitle || settings.brandName || "Gentsity",
+        title: settings.metaTitle || settings.brandName || "MasafiShop",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
       },
       verification: {
@@ -234,7 +234,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   } catch (error) {
     return {
-      title: "Gentsity",
+      title: "MasafiShop",
       description: "Your ultimate destination for quality products.",
     };
   }

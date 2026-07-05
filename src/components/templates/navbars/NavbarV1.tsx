@@ -287,7 +287,11 @@ export default function Navbar() {
 
             {/* Logo (Centered in desktop, Left-ish in mobile) */}
             <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center justify-center">
-              <Logo textClassName="text-lg md:text-2xl whitespace-nowrap" />
+              <Logo 
+                imageClassName="md:size-16" 
+                textClassName="text-lg md:text-3xl whitespace-nowrap" 
+                sizes="(max-width: 768px) 24px, 64px"
+              />
             </div>
 
             {/* Icons/Action Row (Right) */}

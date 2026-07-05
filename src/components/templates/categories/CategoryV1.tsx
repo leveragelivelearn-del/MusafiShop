@@ -124,10 +124,11 @@ export default function CategoryV1({ categories }: CategoryShowcaseProps) {
                 <button
                   key={index}
                   onClick={() => mobileApi?.scrollTo(index)}
-                  className={`transition-all duration-300 cursor-pointer rounded-full h-1.5 ${index === mobileIndex
-                    ? 'w-6 bg-primary'
-                    : 'w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                    }`}
+                  className={`transition-all duration-300 cursor-pointer rounded-full h-1.5 ${
+                    index === mobileIndex
+                      ? 'w-6 bg-primary'
+                      : 'w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  }`}
                   aria-label={`Go to group ${index + 1}`}
                 />
               ))}
@@ -165,10 +166,11 @@ export default function CategoryV1({ categories }: CategoryShowcaseProps) {
                     <button
                       key={index}
                       onClick={() => desktopApi?.scrollTo(index)}
-                      className={`transition-all duration-300 cursor-pointer rounded-full h-1.5 ${index === desktopIndex
-                        ? 'w-8 bg-primary'
-                        : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                        }`}
+                      className={`transition-all duration-300 cursor-pointer rounded-full h-1.5 ${
+                        index === desktopIndex
+                          ? 'w-8 bg-primary'
+                          : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      }`}
                       aria-label={`Go to group ${index + 1}`}
                     />
                   ))}
