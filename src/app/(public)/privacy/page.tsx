@@ -5,8 +5,8 @@ import { Separator } from '@/components/ui/separator';
 import { ShieldCheck, Info, Share2, Lock, Eye, Bell } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | MasafiShop',
-  description: 'Learn how MasafiShop collects, uses, and protects your personal information.',
+  title: 'Privacy Policy | Masafishop',
+  description: 'Learn how Masafishop collects, uses, and protects your personal information.',
 };
 
 async function getSettings() {
@@ -15,9 +15,9 @@ async function getSettings() {
     const settings = await GlobalSettings.findOne().lean();
     if (!settings) {
       return {
-        brandName: "MasafiShop",
+        brandName: "Masafishop",
         contact: {
-          email: "support@MasafiShop.com"
+          email: "support@Masafishop.com"
         }
       };
     }
@@ -25,9 +25,9 @@ async function getSettings() {
   } catch (error) {
     console.error('Error fetching settings for privacy page:', error);
     return {
-      brandName: "MasafiShop",
+      brandName: "Masafishop",
       contact: {
-        email: "support@MasafiShop.com"
+        email: "support@Masafishop.com"
       }
     };
   }
@@ -36,7 +36,7 @@ async function getSettings() {
 export default async function PrivacyPage() {
   const settings = await getSettings();
   const brandName = settings.brandName || "RPL Market";
-  const contactEmail = settings.contact?.email || "support@MasafiShop.com";
+  const contactEmail = settings.contact?.email || "support@Masafishop.com";
   const lastUpdated = "April 04, 2026";
 
   return (

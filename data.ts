@@ -1,5 +1,5 @@
 export const productTitles = [
-  "MasafiShop Wellness Pro",
+  "Masafishop Wellness Pro",
   "Urban Velocity Sneakers",
   "CloudWalk Elite Performance",
   "Stealth Neo-Classic Lows",

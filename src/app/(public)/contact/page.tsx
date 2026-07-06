@@ -7,8 +7,8 @@ import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | MasafiShop',
-  description: 'Get in touch with MasafiShop for any inquiries, support, or feedback.',
+  title: 'Contact Us | Masafishop',
+  description: 'Get in touch with Masafishop for any inquiries, support, or feedback.',
 };
 
 async function getSettings() {
@@ -17,9 +17,9 @@ async function getSettings() {
     const settings = await GlobalSettings.findOne().lean();
     if (!settings) {
       return {
-        brandName: "MasafiShop",
+        brandName: "Masafishop",
         contact: {
-          email: "support@MasafiShop.com",
+          email: "support@Masafishop.com",
           phone: "+8801234567890",
           address: "Dhaka, Bangladesh"
         },
@@ -145,7 +145,7 @@ export default async function ContactPage() {
                 </p>
                 <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-md border bg-muted">
                   <iframe
-                    title="MasafiShop Location"
+                    title="Masafishop Location"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

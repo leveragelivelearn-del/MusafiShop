@@ -5,8 +5,8 @@ import { Separator } from '@/components/ui/separator';
 import { FileText, ShoppingBag, Truck, UserCheck, Scale, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | MasafiShop',
-  description: 'Understand the terms and conditions for shopping at MasafiShop.',
+  title: 'Terms & Conditions | Masafishop',
+  description: 'Understand the terms and conditions for shopping at Masafishop.',
 };
 
 async function getSettings() {
@@ -15,9 +15,9 @@ async function getSettings() {
     const settings = await GlobalSettings.findOne().lean();
     if (!settings) {
       return {
-        brandName: "MasafiShop",
+        brandName: "Masafishop",
         contact: {
-          email: "support@MasafiShop.com",
+          email: "support@Masafishop.com",
           phone: "+8801234567890"
         }
       };
@@ -26,9 +26,9 @@ async function getSettings() {
   } catch (error) {
     console.error('Error fetching settings for terms page:', error);
     return {
-      brandName: "MasafiShop",
+      brandName: "Masafishop",
       contact: {
-        email: "support@MasafiShop.com",
+        email: "support@Masafishop.com",
         phone: "+8801234567890"
       }
     };
@@ -38,7 +38,7 @@ async function getSettings() {
 export default async function TermsPage() {
   const settings = await getSettings();
   const brandName = settings.brandName || "RPL Market";
-  const contactEmail = settings.contact?.email || "support@MasafiShop.com";
+  const contactEmail = settings.contact?.email || "support@Masafishop.com";
   const lastUpdated = "April 04, 2026";
 
   return (
