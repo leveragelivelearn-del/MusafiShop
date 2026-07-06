@@ -40,11 +40,11 @@ export default function HeroV4({ banners }: HeroV4Props) {
                  <span className="text-primary font-mono font-black uppercase tracking-[0.4em] text-[10px]">Strategic Collection / V1</span>
               </div>
               
-              <h2 className="text-5xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter mb-8 uppercase max-w-lg">
+              <h2 className="text-5xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter mb-10 md:mb-8 uppercase max-w-lg">
                 {mainBanner.title}
               </h2>
               
-              <p className="text-white/60 font-mono text-xs md:text-sm mb-10 max-w-sm uppercase tracking-widest leading-relaxed">
+              <p className="text-white/60 font-mono text-xs md:text-sm mb-12 md:mb-10 max-w-sm uppercase tracking-widest leading-relaxed">
                 {mainBanner.subtitle || 'Automated systems identifying premium commerce opportunities for elite selection.'}
               </p>
               

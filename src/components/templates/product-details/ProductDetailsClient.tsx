@@ -208,13 +208,13 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
   const displayPrice = activeVariant?.price || product.price;
   const displaySalePrice = activeVariant?.salePrice || product.salePrice;
   const hasVariants = (uniqueColors.length > 0 || uniqueSizes.length > 0);
-  
+
   // Strict stock calculation: If product has variants, stock MUST come from the active variant.
   // We only fallback to product.stock if the product truly has no variants at all.
-  const displayStock = hasVariants 
+  const displayStock = hasVariants
     ? (activeVariant ? (activeVariant.stock ?? 0) : 0)
     : (product.stock ?? 0);
-    
+
   const displaySku = activeVariant?.sku || product.sku;
 
   // Debug log for troubleshooting stock discrepancies
@@ -613,13 +613,12 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                         key={color}
                         disabled={isOutOfStock}
                         onClick={() => setSelectedColor(color)}
-                        className={`px-4 py-2 text-xs font-bold transition-all border ${
-                          selectedColor === color
+                        className={`px-4 py-2 text-xs font-bold transition-all border ${selectedColor === color
                             ? 'bg-primary/5 border-primary text-primary shadow-sm'
                             : isOutOfStock
-                            ? 'bg-muted/30 border-dashed text-muted-foreground/50 cursor-not-allowed'
-                            : 'border-muted-foreground/20 text-muted-foreground hover:border-primary/50'
-                        }`}
+                              ? 'bg-muted/30 border-dashed text-muted-foreground/50 cursor-not-allowed'
+                              : 'border-muted-foreground/20 text-muted-foreground hover:border-primary/50'
+                          }`}
                       >
                         {color}
                         {isOutOfStock && <span className="block text-[8px] mt-0.5 opacity-50">Sold Out</span>}
@@ -647,7 +646,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                         onClick={() => setSelectedSize(sizeName)}
                         className={`min-w-[48px] h-12 flex flex-col items-center justify-center rounded-xl border-2 font-bold transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:grayscale disabled:scale-100 disabled:cursor-not-allowed ${selectedSize === sizeName
                           ? 'border-primary bg-primary/5 ring-4 ring-primary/10 text-primary'
-                          : isAvailable 
+                          : isAvailable
                             ? 'border-muted hover:border-primary/30 text-muted-foreground'
                             : 'border-muted/50 border-dashed text-muted-foreground/30'
                           }`}
@@ -713,15 +712,24 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
             </Button>
           </div>
 
-          {/* Row 2: Buy Now (Order Now) */}
-          <div>
+          {/* Row 2: Add to Cart and Buy Now */}
+          <div className="grid grid-cols-2 gap-4">
             <Button
               size="lg"
-              className="w-full h-14 rounded-full font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-primary/25"
+              variant="outline"
+              className="h-14 rounded-full font-black text-[10px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all hover:scale-[1.02] active:scale-95"
+              onClick={handleAddToCart}
+              disabled={(displayStock || 0) === 0}
+            >
+              <ShoppingCart className="mr-2 h-5 w-5 hidden sm:block" /> Add to Cart
+            </Button>
+            <Button
+              size="lg"
+              className="h-14 rounded-full font-black text-[10px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-primary/25"
               onClick={handleBuyNow}
               disabled={(displayStock || 0) === 0}
             >
-              অর্ডার করুন
+              Buy Now
             </Button>
           </div>
 
@@ -733,11 +741,11 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
               className="w-full h-14 rounded-full font-black text-xs uppercase tracking-[0.2em] border-2 border-[#075E54] text-[#075E54] hover:bg-[#075E54] hover:text-white transition-all hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
               onClick={() => {
                 const message = encodeURIComponent(`Hi, I'm interested in ${product.name}. Price: ${CURRENCY_SYMBOL}${Math.round(displaySalePrice || displayPrice)}`);
-                
+
                 // Parse whatsappNumber robustly
                 let cleanNumber = (whatsappNumber || '').trim();
                 let phone = '';
-                
+
                 if (cleanNumber.includes('wa.me/')) {
                   const parts = cleanNumber.split('wa.me/');
                   phone = parts[parts.length - 1];
@@ -751,19 +759,19 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                 } else {
                   phone = cleanNumber.replace(/[^0-9]/g, '');
                 }
-                
+
                 // Strip any query parameters or non-digit chars
                 phone = phone.split('?')[0].replace(/[^0-9]/g, '');
-                
+
                 window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
               }}
             >
-              <svg 
-                className="h-5 w-5 fill-current" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="h-5 w-5 fill-current"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
               Order via WhatsApp
             </Button>

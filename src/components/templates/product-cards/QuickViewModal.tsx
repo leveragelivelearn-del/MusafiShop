@@ -148,7 +148,7 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
     } else {
       toast.success(`${product.name} added to cart`);
     }
-    
+
     onClose();
   };
 
@@ -159,7 +159,7 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-5xl w-[95vw] p-0 overflow-hidden bg-white border-none rounded-none shadow-2xl [&>button:not(.custom-close)]:hidden">
-        <button 
+        <button
           onClick={onClose}
           className="custom-close absolute right-4 top-4 z-[100] p-2 bg-red-500 hover:bg-red-600 text-white rounded-sm shadow-xl transition-all"
         >
@@ -329,14 +329,23 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
               </div>
 
               <Button
+                className="flex-grow h-12 bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest text-[10px] rounded-none shadow-lg shadow-primary/20"
+                onClick={(e) => handleAddToCart(e)}
+                disabled={(activeVariant?.stock ?? product.stock) === 0}
+              >
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                {(activeVariant?.stock ?? product.stock) === 0 ? 'Out of Stock' : 'Add to Cart'}
+              </Button>
+
+              <Button
                 className="flex-grow h-12 bg-black hover:bg-neutral-800 text-white font-bold uppercase tracking-widest text-[10px] rounded-none shadow-lg"
                 onClick={(e) => handleAddToCart(e, true)}
                 disabled={(activeVariant?.stock ?? product.stock) === 0}
               >
-                {(activeVariant?.stock ?? product.stock) === 0 ? 'Out of Stock' : 'অর্ডার করুন'}
+                Buy Now
               </Button>
 
-              <button 
+              <button
                 onClick={() => {
                   const addToWishlistPayload = {
                     content_name: product.name,

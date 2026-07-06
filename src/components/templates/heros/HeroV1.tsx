@@ -145,7 +145,7 @@ export default function HeroV1({ banners }: HeroSliderProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-                            className="text-base sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-1 sm:mb-6 drop-shadow-2xl"
+                            className={`text-base sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight drop-shadow-2xl ${banner.subtitle ? 'mb-1 sm:mb-6' : 'mb-5 sm:mb-8'}`}
                           >
                             {banner.title}
                           </motion.h1>
