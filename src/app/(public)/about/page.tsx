@@ -194,7 +194,7 @@ export default async function AboutPage() {
             Crafted by Jia Pixel
           </h3>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-            This state-of-the-art e-commerce storefront is proudly designed, developed, and maintained by Jia Pixel, the{' '}
+            This modern e-commerce storefront is crafted and optimized by Jia Pixel, the{' '}
             <a
               href="https://www.jiapixel.com"
               target="_blank"
@@ -203,7 +203,7 @@ export default async function AboutPage() {
             >
               Leading Digital Agency In Bangladesh
             </a>
-            . Our team specializes in engineering high-performance, high-conversion web solutions with flawless user experiences. As a premium{' '}
+            . We build high-performance storefronts that deliver outstanding user experiences. Serving as a premier{' '}
             <a
               href="https://www.jiapixel.com/projects/premium-fashion-web-design-agency-for-iconic-brands"
               target="_blank"
@@ -212,7 +212,7 @@ export default async function AboutPage() {
             >
               Fashion Web Design Agency
             </a>
-            , we combine beautiful aesthetics with clean, scalable code to empower brands and establish ultimate online authority.
+            , our team blends interactive, stylish designs with secure, robust code to help fashion brands scale effortlessly.
           </p>
         </div>
       </section>
